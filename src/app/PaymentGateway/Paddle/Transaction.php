@@ -4,13 +4,24 @@ declare(strict_types=1);
 
 namespace App\PaymentGateway\Paddle;
 
-use App\Notification\Email;
+use App\Enums\Status;
 
 class Transaction
 {
-    //use "\" to use build in function php
+    private string $status;
+
     public function __construct()
     {
-        var_dump(new Email());
+        $this->setStatus(Status::PENDING);
+    }
+
+    public function setStatus(string $status): self
+    {
+        if (!isset(Status::ALL_STATUS[$status])) {
+            throw new \InvalidArgumentException('Invalid status');
+        }
+        $this->status = $status;
+
+        return $this;
     }
 }
