@@ -8,20 +8,39 @@ use App\Enums\Status;
 
 class Transaction
 {
-    private string $status;
+    // private string $status;
 
-    public function __construct()
-    {
-        $this->setStatus(Status::PENDING);
+    // public function __construct()
+    // {
+    //     $this->setStatus(Status::PENDING);
+    // }
+
+    // public function setStatus(string $status): self
+    // {
+    //     if (!isset(Status::ALL_STATUS[$status])) {
+    //         throw new \InvalidArgumentException('Invalid status');
+    //     }
+    //     $this->status = $status;
+
+    //     return $this;
+    // }
+
+    private static int $count = 0;
+
+    public function __construct(
+        public float $amount,
+        public string $description
+    ) {
+        Transaction::$count++;
     }
 
-    public function setStatus(string $status): self
+    public static function getCount(): int
     {
-        if (!isset(Status::ALL_STATUS[$status])) {
-            throw new \InvalidArgumentException('Invalid status');
-        }
-        $this->status = $status;
+        return Transaction::$count;
+    }
 
-        return $this;
+    public function process()
+    {
+        echo 'process';
     }
 }

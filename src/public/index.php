@@ -2,13 +2,14 @@
 
 use App\Paymentgateway\Paddle\Transaction;
 use App\Enums\Status;
+use App\DB;
 
 //composer autoloading
 require __DIR__ . '/../vendor/autoload.php';
 
-$transaction = new Transaction();
+$transaction = new Transaction(2, 'transaction 1');
 
 //access class constants
-$transaction->setStatus(Status::PAID);
+// $transaction->setStatus(Status::PAID);
 
-var_dump($transaction);
+$db = DB::getInstance([]);
