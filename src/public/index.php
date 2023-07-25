@@ -1,15 +1,17 @@
 <?php
 
 use App\Paymentgateway\Paddle\Transaction;
-use App\Enums\Status;
-use App\DB;
 
 //composer autoloading
 require __DIR__ . '/../vendor/autoload.php';
 
-$transaction = new Transaction(2, 'transaction 1');
+$transaction = new Transaction(25);
 
-//access class constants
-// $transaction->setStatus(Status::PAID);
+//refelction api to access private property and method
+// $reflectionProperty = new ReflectionProperty(Transaction::class, 'amount');
+// $reflectionProperty->setAccessible(true);
 
-$db = DB::getInstance([]);
+// $reflectionProperty->setValue($transaction, 50);
+// var_dump($reflectionProperty->getValue($transaction));
+
+$transaction->process();
