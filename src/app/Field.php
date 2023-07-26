@@ -2,7 +2,7 @@
 
 namespace App;
 
-abstract class Field
+abstract class Field implements Renderable
 {
     public function __construct(protected string $name)
     {
@@ -12,5 +12,4 @@ abstract class Field
     * jika parent memiliki abstract method, maka
     * child class harus implementasi abstract method 
     */
-    abstract public function render(): string;
 }
