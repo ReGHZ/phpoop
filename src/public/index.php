@@ -1,17 +1,15 @@
 <?php
 
-use App\Paymentgateway\Paddle\Transaction;
+use App\Toaster;
+use App\ToasterPro;
 
 //composer autoloading
 require __DIR__ . '/../vendor/autoload.php';
 
-$transaction = new Transaction(25);
+$toaster = new ToasterPro();
 
-//refelction api to access private property and method
-// $reflectionProperty = new ReflectionProperty(Transaction::class, 'amount');
-// $reflectionProperty->setAccessible(true);
-
-// $reflectionProperty->setValue($transaction, 50);
-// var_dump($reflectionProperty->getValue($transaction));
-
-$transaction->process();
+$toaster->addSlice('bread');
+$toaster->addSlice('bread');
+$toaster->addSlice('bread');
+$toaster->addSlice('bread');
+$toaster->toast();
