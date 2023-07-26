@@ -3,12 +3,42 @@
 //composer autoloading
 require __DIR__ . '/../vendor/autoload.php';
 
-/*
-* polymorphism berarti banyak form
-* object yang dikatakan polymorphism adalah
-* bisa pass multiple instances of checks
-*/
 //instansiasi
-$collector = new \App\DebtCollectionService();
+$invoice = new \App\Invoice(15);
 
-echo $collector->collectDebt(new \App\Person()) . PHP_EOL;
+/*
+* __get 
+* __set 
+*/
+// $invoice->amount = 55;
+// echo $invoice->amount . PHP_EOL;
+
+// var_dump(isset($invoice->amount));
+
+// unset($invoice->amount);
+
+/*
+* __call 
+*/
+// $invoice->process(1, 2, 3);
+// App\invoice::process(1, 2, 3);
+
+/*
+* __callStatic 
+*/
+// $invoice->process(15, 'some description');
+
+/*
+* __toString 
+*/
+// echo $invoice;
+
+/*
+* __invoke 
+*/
+// $invoice();
+
+/*
+* __debugInfo 
+*/
+var_dump($invoice);
