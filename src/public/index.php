@@ -4,41 +4,20 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 //instansiasi
-$invoice = new \App\Invoice(15);
 
 /*
-* __get 
-* __set 
+* non static
 */
-// $invoice->amount = 55;
-// echo $invoice->amount . PHP_EOL;
+// $classA = new App\ClassA();
+// $classB = new App\ClassB();
 
-// var_dump(isset($invoice->amount));
-
-// unset($invoice->amount);
+// echo $classA->getName() . PHP_EOL;
+// echo $classB->getName() . PHP_EOL;
 
 /*
-* __call 
+* static
 */
-// $invoice->process(1, 2, 3);
-// App\invoice::process(1, 2, 3);
+// echo \App\ClassA::getName();
+// echo \App\ClassB::getName();
 
-/*
-* __callStatic 
-*/
-// $invoice->process(15, 'some description');
-
-/*
-* __toString 
-*/
-// echo $invoice;
-
-/*
-* __invoke 
-*/
-// $invoice();
-
-/*
-* __debugInfo 
-*/
-var_dump($invoice);
+var_dump(\App\ClassB::make());
