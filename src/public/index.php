@@ -4,50 +4,38 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 /*
-* di php tidak bisa Multiple inheritance
-* namun ada solusi untuk itu yaitu dengan traits
-* dengan traits kita bisa menghindari code duplikasi
-* traits tidak bisa di instansiasi
-* bisa dibilang traits adalah copy paste
-* jika ada konflik dalam method, bisa menggunakan insteadof dan as operator
-* kita juga bisa mengganti visibilitas method traits dengan as operator (not good to use)
-* kita juga bisa menggunakan traits didalam traits
-* abstract juga bisa digunakan dalam traits dantidak perlu mengubah class menjadi abstract
-* daripada abstract, mending menggunakan setter method
-* traits juga memiliki static method dan static property
+*Anomymouse Classes: 
+*Kelas anonim adalah kelas yang tidak memiliki nama. Mereka digunakan 
+*dalam situasi di mana Anda hanya perlu membuat objek 
+*sekali dan tidak perlu menyimpannya untuk digunakan berulang kali;
+*class anonim juga bisa passing argument didalam ();
+*class anonim juga bisa inheritance dan extend dengan class lain;
+*class anonim juga bisa implement interface;
+*kita tidak bisa type hinting dengan anonim class, untuk itu kita harus
+*memakai interface;
+*kita juga bisa membuat class anonim didalam regular class, sehingga 
+*hal tersebut disebut dengan nesting;
+*main cases untuk anonim class adalah untuk testing
 */
-
 //instansiasi
+// $obj = new class(1, 2, 3) implements \App\MyInterface
+// {
+//     public function __construct(public int $a, public int $b, public int $c)
+//     {
+//     }
+// };
 
-$coffeeMaker = new App\CoffeeMaker();
-$coffeeMaker->MakeCoffee();
+// foo($obj);
 
-$latteMaker = new App\LatteMaker();
-$latteMaker->MakeCoffee();
-$latteMaker->MakeLatte();
-
-$cappuccinoMaker = new App\CappuccinoMaker();
-$cappuccinoMaker->MakeCoffee();
-$cappuccinoMaker->MakeCappuccino();
-
-/*
-* traits
-*/
-$allinoneCoffeeMaker = new App\AllInOneCoffeeMaker();
-$allinoneCoffeeMaker->MakeCoffee();
-$allinoneCoffeeMaker->MakeLatte();
-// $allinoneCoffeeMaker->MakeOriginalLatte();
-$allinoneCoffeeMaker->MakeCappuccino();
+// function foo(\App\MyInterface $obj)
+// {
+//     var_dump($obj);
+// }
 
 /*
-* static 
-*/
+ * nesting 
+ */
 
-// \App\LatteMaker::foo();
-// echo \App\LatteMaker::$x;
+$obj = new App\ClassA(1, 2);
 
-// \App\CoffeeMaker::$foo = 'foo';
-// \App\LatteMaker::$foo = 'foo';
-// \App\AllInOneCoffeeMaker::$foo = 'bar';
-
-// echo \App\LatteMaker::$foo . ' ' . \App\AllInOneCoffeeMaker::$foo . PHP_EOL;
+var_dump($obj->bar());
