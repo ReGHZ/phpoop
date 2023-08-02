@@ -3,17 +3,23 @@
 //composer autoloading
 require __DIR__ . '/../vendor/autoload.php';
 
+// single line comment
+
+# single line comment
+
 /*
-* bagaimana cara object komparasi dengan php
+* multi-line comment
 */
 
-$invoice1 = new App\Invoice(new App\Customer('customer 1'), 25, 'test');
-$invoice2 = new App\Invoice(new App\Customer('customer 2'), 25, 'test');
+/**
+ * DocBlock
+ * 
+ * @param
+ * @return
+ * 
+ * digunakan untuk function, method, class, interface, dll
+ */
 
-echo 'invoice1 == invoice2' . PHP_EOL;
-var_dump($invoice1 == $invoice2);
-
-echo 'invoice1 === invoice2' . PHP_EOL;
-var_dump($invoice1 === $invoice2);
-
-var_dump($invoice1, $invoice2);
+ /*
+ * di php 8 cukup pakai type hinting untuk menggantikan docblock
+ */
