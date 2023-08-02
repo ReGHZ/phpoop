@@ -4,38 +4,16 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 /*
-*Anomymouse Classes: 
-*Kelas anonim adalah kelas yang tidak memiliki nama. Mereka digunakan 
-*dalam situasi di mana Anda hanya perlu membuat objek 
-*sekali dan tidak perlu menyimpannya untuk digunakan berulang kali;
-*class anonim juga bisa passing argument didalam ();
-*class anonim juga bisa inheritance dan extend dengan class lain;
-*class anonim juga bisa implement interface;
-*kita tidak bisa type hinting dengan anonim class, untuk itu kita harus
-*memakai interface;
-*kita juga bisa membuat class anonim didalam regular class, sehingga 
-*hal tersebut disebut dengan nesting;
-*main cases untuk anonim class adalah untuk testing
+* bagaimana cara object komparasi dengan php
 */
-//instansiasi
-// $obj = new class(1, 2, 3) implements \App\MyInterface
-// {
-//     public function __construct(public int $a, public int $b, public int $c)
-//     {
-//     }
-// };
 
-// foo($obj);
+$invoice1 = new App\Invoice(new App\Customer('customer 1'), 25, 'test');
+$invoice2 = new App\Invoice(new App\Customer('customer 2'), 25, 'test');
 
-// function foo(\App\MyInterface $obj)
-// {
-//     var_dump($obj);
-// }
+echo 'invoice1 == invoice2' . PHP_EOL;
+var_dump($invoice1 == $invoice2);
 
-/*
- * nesting 
- */
+echo 'invoice1 === invoice2' . PHP_EOL;
+var_dump($invoice1 === $invoice2);
 
-$obj = new App\ClassA(1, 2);
-
-var_dump($obj->bar());
+var_dump($invoice1, $invoice2);
